@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  background-color: #708a96;
+}
+
+h2 {
+  text-align: center;
+}
+
+/******************************************
+*****************ID Values
+******************************************/
+
+#game-container {
+  margin: 0 auto;
+  margin-top: 50px;
+  background-color: #5cbc8c;
+  width: 95%;
+  max-height: inherit; 
+  border-radius: 1%;
+}
+
+#player-0 {
+  background-color: #e4e4e4;
+  width: 40%;
+
+  max-height: inherit;
+  display: inline-block;
+  margin-top: 45px;
+  margin-left: 40px;
+
+}
+
+#player-1 {
+  background-color: #e4e4e4;
+  width: 40%;
+
+  max-height: inherit; 
+  display: inline-block; 
+  margin-top: 45px;
+  margin-right: 40px;
+
+
+}
+
+#health-0 {
+  display: inline;
+  position: absolute;
+}
+
+#reset {
+  display: block;
+  margin: 0;
+}
+
+/**********************
+*******class attributes
+********************/
+
+.circle-avatar {
+  background-color: #16a085;
+  border-radius: 50%;
+  height: 9rem;
+  width: 9rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  box-shadow: ;
+}
+
+.activePlayer {
+  box-shadow: -1px 0px 8px -1px #18ffff;
+  background-color: #fffdf9 !important;
+  width: 43% !important;
+  height: 88% !important;
+}
+
+.robot {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100%;
+}
+
+.winner h2 {
+  color: red;
+  font-weight: 300;
+
+}
+
+.winner {
+  background-color:blue;
+  box-shadow: 1px 2px 3px 4px black;
+}
+
+#health-0,
+#health-1 {
+  text-align: center;
+}
+
+/******************
+**** Buttons
+******/
+
+.button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 225px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: ;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 25px;
+  background-color: #3ab397;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  border: outset #16a085 0px;
+  background: #06956d;
+  background-image: -webkit-linear-gradient(top, #06956d, #3ab397);
+  background-image: -moz-linear-gradient(top, #06956d, #3ab397);
+  background-image: -ms-linear-gradient(top, #06956d, #3ab397);
+  background-image: -o-linear-gradient(top, #06956d, #3ab397);
+  background-image: linear-gradient(to bottom, #06956d, #3ab397);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  text-decoration: none;
+}

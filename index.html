@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--<button id="reset" type="button">Reset</button>-->
+    <div id="game-container">
+      <div id="player-0">
+        <h2 id="h2-player-0">Player 1</h2>
+        <div class="circle-avatar">
+          <img
+            class="robot"
+            id="robot-1"
+            src="images/robot-0.png"
+            alt="Robot_player1"
+          />
+        </div>
+        <div id="health-0">
+          <meter
+            id="meter-0"
+            min="0"
+            max="100"
+            value="100"
+            low="15"
+            high="50"
+            optimum="75"
+          ></meter>
+        </div>
+        <button class="button" id="attack-0" type="button">ATTACK</button>
+      </div>
+      <!--Second Player-->
+      <div id="player-1">
+        <h2 id="h2-player-1">Player 2</h2>
+        <div class="circle-avatar">
+          <img
+            class="robot"
+            id="robot-2"
+            src="images/robot-1.png"
+            alt="Robot_player2"
+          />
+        </div>
+        <div id="health-1">
+          <meter
+            id="meter-1"
+            min="0"
+            max="100"
+            value="100"
+            low="15"
+            high="50"
+            optimum="75"
+          ></meter>
+        </div>
+        <button class="button" id="attack-1" type="button">ATTACK</button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
