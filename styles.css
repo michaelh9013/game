@@ -12,20 +12,24 @@ h2 {
 ******************************************/
 
 #game-container {
-  margin: 0 auto;
-  margin-top: 50px;
+
+  align-items: center;
   background-color: #5cbc8c;
-  width: 95%;
-  max-height: inherit; 
-  border-radius: 1%;
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: nowrap; 
+  justify-content: center;
+  max-width: 75%; 
+  margin-top: 50px; 
+  margin-left: auto;
+  margin-right: auto; 
+
 }
 
 #player-0 {
   background-color: #e4e4e4;
   width: 40%;
-
-  max-height: inherit;
-  display: inline-block;
+  margin-right: 50px; 
   margin-top: 45px;
   margin-left: 40px;
 
@@ -34,9 +38,6 @@ h2 {
 #player-1 {
   background-color: #e4e4e4;
   width: 40%;
-
-  max-height: inherit; 
-  display: inline-block; 
   margin-top: 45px;
   margin-right: 40px;
 
@@ -44,8 +45,7 @@ h2 {
 }
 
 #health-0 {
-  display: inline;
-  position: absolute;
+
 }
 
 #reset {
@@ -62,22 +62,19 @@ h2 {
   border-radius: 50%;
   height: 9rem;
   width: 9rem;
-  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
-  box-shadow: ;
+
 }
 
 .activePlayer {
   box-shadow: -1px 0px 8px -1px #18ffff;
   background-color: #fffdf9 !important;
-  width: 43% !important;
-  height: 88% !important;
+
 }
 
 .robot {
-  display: block;
   margin-right: auto;
   margin-left: auto;
   height: 100%;
@@ -90,7 +87,7 @@ h2 {
 }
 
 .winner {
-  background-color:blue;
+  background-color: white !important;
   box-shadow: 1px 2px 3px 4px black;
 }
 
@@ -107,6 +104,7 @@ h2 {
   margin-left: auto;
   margin-right: auto;
   margin-top: 225px;
+  margin-bottom: 10px; 
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: ;
