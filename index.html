@@ -8,10 +8,26 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!--<button id="reset" type="button">Reset</button>-->
+    <button id="reset" type="button">Reset</button>
     <div id="game-container">
       <div id="player-0">
         <h2 id="h2-player-0">Player 1</h2>
+        <h3>Active: </h3>
+        <div class="active-buffs">
+
+          <img
+            class="active-buff icon-active-buff"
+            id="shield-current-0"
+            src="images/buff-2.png"
+            alt="shield"
+          />
+          <img
+            class="active-buff icon-active-buff"
+            id="strength-current-0"
+            src="images/buff-3.png"
+            alt="strength"
+          />
+        </div>
         <div class="circle-avatar">
           <img
             class="robot"
@@ -20,6 +36,7 @@
             alt="Robot_player1"
           />
         </div>
+
         <div id="health-0">
           <meter
             id="meter-0"
@@ -30,12 +47,52 @@
             high="50"
             optimum="75"
           ></meter>
+          <div class="health"><span id="health-num-0">100</span>/100</div>
+        </div>
+        <!--Buff images  -->
+        <div id="buff-images">
+          <input
+            type="image"
+            class="buff"
+            id="heart-0"
+            src="images/buff-1.png"
+            alt="heart"
+          />
+          <input
+            type="image"
+            class="buff"
+            id="shield-0"
+            src="images/buff-2.png"
+            alt="shield"
+          />
+          <input
+            type="image"
+            class="buff"
+            id="strength-0"
+            src="images/buff-3.png"
+            alt="strength"
+          />
         </div>
         <button class="button" id="attack-0" type="button">ATTACK</button>
       </div>
       <!--Second Player-->
       <div id="player-1">
         <h2 id="h2-player-1">Player 2</h2>
+        <div class="active-buffs">
+          <h3>Active: </h3>
+          <img
+            class="active-buff icon-active-buff"
+            id="shield-current-1"
+            src="images/buff-2.png"
+            alt="shield"
+          />
+          <img
+            class="active-buff icon-active-buff"
+            id="strength-current-1"
+            src="images/buff-3.png"
+            alt="strength"
+          />
+        </div>
         <div class="circle-avatar">
           <img
             class="robot"
@@ -44,6 +101,7 @@
             alt="Robot_player2"
           />
         </div>
+
         <div id="health-1">
           <meter
             id="meter-1"
@@ -54,11 +112,57 @@
             high="50"
             optimum="75"
           ></meter>
+          <div class="health"><span id="health-num-1">100</span>/100</div>
+        </div>
+        <!--buff images -->
+        <div id="buff-images">
+          <input
+            type="image"
+            class="buff"
+            id="heart-1"
+            src="images/buff-1.png"
+            alt="heart"
+          />
+          <input
+            type="image"
+            class="buff"
+            id="shield-1"
+            src="images/buff-2.png"
+            alt="shield"
+          />
+          <input
+            type="image"
+            class="buff"
+            id="strength-1"
+            src="images/buff-3.png"
+            alt="strength"
+          />
         </div>
         <button class="button" id="attack-1" type="button">ATTACK</button>
       </div>
     </div>
-
+    <div>
+      <ul>
+        <li>
+          <a target="_blank" href="https://icons8.com/icons/set/shield"
+            >Shield icon</a
+          >
+          icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+        </li>
+        <li>
+          <a target="_blank" href="https://icons8.com/icons/set/like--v3"
+            >Heart icon</a
+          >
+          icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+        </li>
+        <li>
+          <a target="_blank" href="https://icons8.com/icons/set/strength"
+            >Strength icon</a
+          >
+          icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+        </li>
+      </ul>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
