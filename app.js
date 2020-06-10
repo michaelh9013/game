@@ -1,7 +1,14 @@
 // buff buttons need to be disabled when game ends
 //When reset button pressed mult times, attack buttons disabled
+// features to add: no buffs allowed once attack takes place, per turn.
+//new UI... more compact
+//allow health buff to take effect over time
+//once attack is pressed, automate remaining attacks
+// correct time outs for active buffs
 
 let health,
+  auto,
+  noBuffsThisTurn,
   activeGame,
   activeBuffs,
   whichPlayer,
@@ -24,7 +31,7 @@ document
   .querySelector(`#attack-${whichPlayer}`) //attack button; highlighted based on which player is active
   .addEventListener("click", attack);
 
-document.getElementById("reset").addEventListener("click", resetGame); // reset button
+document.getElementById("reset").addEventListener("click", attack); // reset button
 
 /*****************
  *
@@ -32,7 +39,15 @@ document.getElementById("reset").addEventListener("click", resetGame); // reset 
  *
  * ***************/
 
+
+
 function attack() {
+
+  auto = setInterval(threeTurns, 2000);
+}
+
+function threeTurns() {
+
   if (whichPlayer === 0) {
     attackValue = Math.floor(Math.random() * hitValue[whichPlayer]); //Set the attackValue
 
@@ -114,6 +129,7 @@ function attack() {
       nextPlayer();
     }
   }
+
   buffControl(); //buff conditions checked on every click
 }
 
@@ -163,14 +179,20 @@ function resetGame() {
   document.getElementById(`h2-player-0`).textContent = "Player 1";
   document.getElementById(`h2-player-1`).textContent = "Player 2";
 
+  //icons set for buff selection
+  buffs = document.querySelectorAll(".buff");
+  for (var i = 0; i < buffs.length; i++) {
+    buffs[i].classList.remove("inactiveBuff");
+    buffs[i].disabled = false;
+  }
+
   //set up icons for mini active buffs, opaque when not active, controlled
   //dynamically through the buffControl() function
   activeBuffs = document.querySelectorAll(`.icon-active-buff`);
   for (var i = 0; i < activeBuffs.length; i++) {
     activeBuffs[i].classList.add("inactiveBuff");
-
-    toggleButtons();
   }
+  toggleButtons();
 }
 /************
  *
@@ -179,6 +201,7 @@ function resetGame() {
  ***********/
 
 function nextPlayer() {
+
   if (whichPlayer === 0) {
     whichPlayer++;
 
@@ -203,6 +226,8 @@ function nextPlayer() {
 
   turnCount = 0;
   console.log(`nextPlayer() called, var whichPlayer = ${whichPlayer}.`);
+
+
 }
 
 /*************
@@ -270,8 +295,14 @@ function getBuffs() {
       ) {
         if (whichPlayer === 0) {
           hitValue[1] = 4; // lower the hitValue of offensive player for perceived gain in defense for the defensive player
+          if (buffStrength[1] === true) {
+            hitValue[1] = 12; // if offensive player has strength active, set to 12 as median between defense and strength
+          }
         } else {
           hitValue[0] = 4;
+          if (buffStrength[0] === true) {
+            hitValue[0] = 12;
+          }
         }
         console.log(`(Player ${whichPlayer}) selected the sheild buff`);
         document
@@ -285,6 +316,12 @@ function getBuffs() {
         whichPlayer === whichPlayer
       ) {
         hitValue[whichPlayer] = 20;
+        // if shield was selected before strength, then set hitValue to 12 as above as a median
+        if (buffShield[0] === true && hitValue[1] === 20) {
+          hitValue[whichPlayer] = 12;
+        } else if (buffShield[1] === true && hitValue[0] === 20) {
+          hitValue[whichPlayer] = 12;
+        }
         console.log(`(Player ${whichPlayer}) selected the strength buff`);
         buffStrength[whichPlayer] = true;
         buffControl();
@@ -321,8 +358,9 @@ function buffControl() {
   }
   shieldControl(); // conditions in these functions are checked on every button click
   strengthControl(); //*****************************************************************/
-  
-  if (buffShield[whichPlayer] === true) { // changes the active mini buff icons dynamically; defaults located under resetGame()
+
+  if (buffShield[whichPlayer] === true) {
+    // changes the active mini buff icons dynamically; defaults located under resetGame()
     document
       .getElementById(`shield-current-${whichPlayer}`)
       .classList.remove("inactiveBuff");
