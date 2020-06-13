@@ -1,13 +1,13 @@
 // buff buttons need to be disabled when game ends
-//When reset button pressed mult times, attack buttons disabled
-// features to add: no buffs allowed once attack takes place, per turn.
+
+// features to add: no buffs allowed //When reset button pressed mult times, attack buttons disabledonce attack takes place, per turn.
 //new UI... more compact
 //allow health buff to take effect over time
-//once attack is pressed, automate remaining attacks
 // correct time outs for active buffs
+//buffs need to be disabled during threeTurns()
 
 let health,
-  auto,
+  autoAttack,
   noBuffsThisTurn,
   activeGame,
   activeBuffs,
@@ -31,7 +31,7 @@ document
   .querySelector(`#attack-${whichPlayer}`) //attack button; highlighted based on which player is active
   .addEventListener("click", attack);
 
-document.getElementById("reset").addEventListener("click", attack); // reset button
+document.getElementById("reset").addEventListener("click", resetGame); // reset button
 
 /*****************
  *
@@ -39,15 +39,20 @@ document.getElementById("reset").addEventListener("click", attack); // reset but
  *
  * ***************/
 
-
-
 function attack() {
+  //autmoates the attack button
+  //disables the attack/reset/buff buttons while setInterval threeTurns() is in progess
 
-  auto = setInterval(threeTurns, 2000);
+  document.getElementById(`attack-${whichPlayer}`).disabled = true;
+  document.getElementById(`reset`).disabled = true;
+  for (var i = 0; i < buffs.length; i++) {
+    buffs[i].disabled = true;
+  }
+
+  autoAttack = setInterval(threeTurns, 1000);
 }
 
 function threeTurns() {
-
   if (whichPlayer === 0) {
     attackValue = Math.floor(Math.random() * hitValue[whichPlayer]); //Set the attackValue
 
@@ -129,7 +134,6 @@ function threeTurns() {
       nextPlayer();
     }
   }
-
   buffControl(); //buff conditions checked on every click
 }
 
@@ -143,13 +147,13 @@ function resetGame() {
   getBuffs(); // enable buff buttons
 
   health = [100, 100];
-  (buffHeart = [false, false]),
-    (buffShield = [false, false]),
-    (buffStrength = [false, false]),
-    (hitValue = [10, 10]),
-    (healthCount = [0, 0]),
-    (shieldCount = [0, 0]),
-    (strengthCount = [0, 0]);
+  buffHeart = [false, false];
+  buffShield = [false, false];
+  buffStrength = [false, false];
+  hitValue = [10, 10];
+  healthCount = [0, 0];
+  shieldCount = [0, 0];
+  strengthCount = [0, 0];
   turnCount = 0;
 
   whichPlayer = Math.floor(Math.random() * 2); // choose randomly which player to go first
@@ -201,6 +205,7 @@ function resetGame() {
  ***********/
 
 function nextPlayer() {
+  clearInterval(autoAttack); // stop auto attack of previous player
 
   if (whichPlayer === 0) {
     whichPlayer++;
@@ -225,9 +230,11 @@ function nextPlayer() {
   }
 
   turnCount = 0;
+  document.getElementById(`reset`).disabled = false; // re-enable reset button for next player
+  for (var i = 0; i < buffs.length; i++) {//re-enable buffs 
+    buffs[i].disabled = false;
+  }
   console.log(`nextPlayer() called, var whichPlayer = ${whichPlayer}.`);
-
-
 }
 
 /*************

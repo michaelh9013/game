@@ -51,7 +51,7 @@ meter {
   margin: 0;
 }
 
-#shield-current-0 {
+#shield-current-0 
 
 }
 
@@ -136,6 +136,7 @@ meter {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border: none; 
 }
 
 
